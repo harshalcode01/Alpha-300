@@ -1,0 +1,14 @@
+class Solution:
+    def repeatedSubstringPattern(self, s: str) -> bool:
+        x = len(s)
+        for size in range(1, x // 2 + 1):
+            if x % size != 0:
+                continue
+            matches = True
+            for i in range(size, x):
+                if s[i] != s[i - size]:
+                    matches = False
+                    break
+            if matches:
+                return True
+        return False
