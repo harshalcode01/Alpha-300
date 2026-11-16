@@ -1,0 +1,21 @@
+def character_replaceing(x, y):
+    count = {}
+    left = 0
+    max_freq = 0
+    best = 0
+    for right in range(len(x)):
+        i = x[right]
+        if i in count:
+            count[i] = count[i] + 1
+        else:
+            count[i] = 1
+        if count[i] > max_freq:
+            max_freq = count[i]
+        while (right - left + 1) - max_freq > y:
+            left_ch = x[left]
+            count[left_ch] = count[left_ch] - 1
+            left = left + 1
+        window = right - left + 1
+        if window > best:
+            best = window
+    return best
