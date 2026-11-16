@@ -1,0 +1,18 @@
+def longest_substring(h):
+    counts = {}
+    left = 0
+    triumph = 0
+    for right in range(len(h)):
+        x = h[right]
+        if x in counts:
+            counts[x] = counts[x] + 1
+        else:
+            counts[x] = 1
+        while counts[x] > 1:
+            left_x = h[left]
+            counts[left_x] = counts[left_x] - 1
+            left = left + 1
+        window = right - left + 1
+        if window > triumph:
+            triumph = window
+    return triumph
