@@ -1,0 +1,13 @@
+def vowel_strings(words, queries):
+    vowels = "aeiou"
+    count = [0]
+    for word in words:
+        if word[0] in vowels and word[-1] in vowels:
+            count.append(count[-1] + 1)
+        else:
+            count.append(count[-1])
+    ans = []
+    for left, right in queries:
+        total = count[right + 1] - count[left]
+        ans.append(total)
+    return ans
